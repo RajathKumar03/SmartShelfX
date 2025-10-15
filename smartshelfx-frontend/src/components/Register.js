@@ -8,7 +8,9 @@ function Register() {
     email: "",
     password: "",
     confirmPassword: "",
+    role: "USER", 
   });
+
   const [message, setMessage] = useState("");
 
   const handleChange = (e) =>
@@ -17,7 +19,6 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage("");
-
 
     if (form.password !== form.confirmPassword) {
       setMessage("Passwords do not match!");
@@ -29,10 +30,16 @@ function Register() {
         name: form.name,
         email: form.email,
         password: form.password,
+        role: form.role, 
       });
       setMessage(res.data || "Registered successfully!");
-      // clear form on success
-      setForm({ name: "", email: "", password: "", confirmPassword: "" });
+      setForm({
+        name: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+        role: "USER",
+      });
     } catch (err) {
       setMessage("Registration failed!");
     }
@@ -72,6 +79,14 @@ function Register() {
           onChange={handleChange}
           required
         />
+
+        {/* Role dropdown */}
+        <select name="role" value={form.role} onChange={handleChange}>
+          <option value="USER">User</option>
+          <option value="STAFF">Staff</option>
+          <option value="ADMIN">Admin</option>
+        </select>
+
         <button type="submit">Register</button>
       </form>
       <p className="msg">{message}</p>
