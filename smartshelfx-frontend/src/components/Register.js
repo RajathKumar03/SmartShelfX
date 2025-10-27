@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import API from "../api";
+import { AuthAPI } from "../api"; // ✅ Correct import
 import "../css/Auth.css";
 
 function Register() {
@@ -18,16 +18,20 @@ function Register() {
   const [message, setMessage] = useState("");
   const [success, setSuccess] = useState(false);
 
+  // Handle input changes
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setForm({ ...form, [name]: type === "checkbox" ? checked : value });
   };
 
+  // Email validation
   const validateEmail = (email) => /\S+@\S+\.\S+/.test(email);
 
+  // Password validation
   const validatePassword = (password) =>
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(password);
 
+  // Form submit
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage("");
@@ -56,9 +60,9 @@ function Register() {
     }
 
     try {
-      const res = await API.post("/register", form);
-      setMessage("");
+      await AuthAPI.post("/register", form); // ✅ use AuthAPI
       setSuccess(true);
+      setMessage("Registration Successful!");
       setForm({
         fullName: "",
         companyName: "",
@@ -71,6 +75,7 @@ function Register() {
         termsAccepted: false,
       });
     } catch (err) {
+      console.error(err);
       setMessage("Registration failed! " + (err.response?.data || ""));
     }
   };
@@ -139,15 +144,15 @@ function Register() {
             type="checkbox"
             name="termsAccepted"
             checked={form.termsAccepted}
-            onChange={handleChange} required
+            onChange={handleChange}
+            required
           />{" "}
           I accept the Terms and Conditions
         </div>
         <button type="submit">Register</button>
       </form>
 
-      {message && <p className="error">{message}</p>}
-      {success && <p className="success">Registration Successful!</p>}
+      {message && <p className={success ? "success" : "error"}>{message}</p>}
     </div>
   );
 }

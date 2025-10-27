@@ -1,37 +1,45 @@
 import React, { useState } from "react";
-import API from "../api";
-import "../css/Auth.css";
+import { useNavigate } from "react-router-dom";
+import { AuthAPI } from "../api";
 
 function Login() {
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     email: "",
     password: "",
-    role: "USER", 
+    role: "STORE_MANAGER", // default role
   });
   const [message, setMessage] = useState("");
 
-  const handleChange = (e) =>
-    setForm({ ...form, [e.target.name]: e.target.value });
+  // Handle input changes
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+  };
 
+  // Handle form submit
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage("");
 
     try {
-      const res = await API.post("/login", form);
-
-      localStorage.setItem("user", JSON.stringify(res.data));
+      const res = await AuthAPI.post("/login", form); // use AuthAPI
+      localStorage.setItem("user", JSON.stringify(res.data)); // store user info
 
       setMessage("Login successful!");
-      setForm({ email: "", password: "", role: "USER" });
+      setForm({ email: "", password: "", role: "STORE_MANAGER" });
 
-      // if (res.data.role === "ADMIN") navigate("/admin-dashboard");
-      // else if (res.data.role === "STAFF") navigate("/staff-dashboard");
-      // else navigate("/user-dashboard");
+      // Navigate based on role
+      if (res.data.role === "ADMIN") navigate("/landing"); // admin
+      else if (res.data.role === "STORE_MANAGER") navigate("/landing"); // store manager
+      else navigate("/"); // fallback user
 
     } catch (err) {
+      console.error(err);
       if (err.response && err.response.status === 403) {
         setMessage("Role mismatch! Please select the correct role.");
+      } else if (err.response && err.response.data) {
+        setMessage(err.response.data);
       } else {
         setMessage("Invalid credentials!");
       }
@@ -57,16 +65,13 @@ function Login() {
           onChange={handleChange}
           required
         />
-
-        <select name="role" onChange={handleChange} value={form.role}>
-          <option value="USER">User</option>
-          <option value="STAFF">Staff</option>
+        <select name="role" value={form.role} onChange={handleChange}>
+          <option value="STORE_MANAGER">Store Manager</option>
           <option value="ADMIN">Admin</option>
         </select>
-
         <button type="submit">Login</button>
       </form>
-      <p className="msg">{message}</p>
+      {message && <p className="msg">{message}</p>}
     </div>
   );
 }
