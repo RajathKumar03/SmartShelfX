@@ -1,113 +1,124 @@
-
+/* 🔹 Modern & Professional Auth Page Styling */
 .auth-container {
-    width: 380px;
-    margin: 80px auto;
-    background: #ffffffee;
-    border-radius: 16px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-    padding: 40px 35px;
-    text-align: center;
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
-  }
-  
-  .auth-container:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.15);
-  }
-  
-  .auth-container h2 {
-    margin-bottom: 25px;
-    color: #222;
-    font-size: 26px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-  }
-  
-  .auth-container form {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-  
-  .auth-container input {
-    padding: 12px 14px;
-    border: 1px solid #d1d1d1;
-    border-radius: 10px;
-    font-size: 15px;
-    background-color: #fafafa;
-    transition: border-color 0.3s, box-shadow 0.3s;
-  }
-  
-  .auth-container input:focus {
-    border-color: #007bff;
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.4);
-  }
-  
-  .auth-container button {
-    padding: 12px;
-    background: linear-gradient(135deg, #007bff, #00a8ff);
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .auth-container button:hover {
-    background: linear-gradient(135deg, #0056b3, #007bff);
-    transform: scale(1.02);
-  }
-  
-  .msg {
-    margin-top: 18px;
-    font-weight: 500;
-    color: #555;
-    font-size: 14px;
-  }
-  
-  .nav {
-    display: flex;
-    justify-content: center;
-    gap: 22px;
-    margin-top: 28px;
-  }
-  
-  .nav a {
-    color: #007bff;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s;
-  }
-  
-  .nav a:hover {
-    color: #0056b3;
-    text-decoration: underline;
-  }
-  
-.auth-container select {
-  width: 100%;
-  padding: 12px 14px;
-  border: 1px solid #d1d1d1;
-  border-radius: 10px;
-  font-size: 15px;
-  background-color: #fafafa;
-  color: #333;
-  transition: border-color 0.3s, box-shadow 0.3s;
-  cursor: pointer;
-  appearance: none;
-  background-image: linear-gradient(45deg, transparent 50%, #007bff 50%),
-    linear-gradient(135deg, #007bff 50%, transparent 50%);
-  background-position: calc(100% - 20px) center, calc(100% - 15px) center;
-  background-size: 5px 5px, 5px 5px;
-  background-repeat: no-repeat;
+  width: 400px;
+  margin: 90px auto;
+  background: linear-gradient(145deg, #ffffffcc, #f8f9ff);
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12), 0 0 20px rgba(0, 123, 255, 0.05);
+  padding: 45px 40px;
+  text-align: center;
+  backdrop-filter: blur(12px);
+  transition: all 0.35s ease;
 }
 
+.auth-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15), 0 0 25px rgba(0, 123, 255, 0.08);
+}
+
+.auth-container h2 {
+  margin-bottom: 28px;
+  color: #1f1f1f;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: capitalize;
+  background: linear-gradient(90deg, #007bff, #00a8ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.auth-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.auth-container input,
+.auth-container select {
+  padding: 13px 15px;
+  border: 1px solid #d0d4dd;
+  border-radius: 12px;
+  font-size: 15px;
+  background-color: #fefefe;
+  color: #333;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.auth-container input:focus,
 .auth-container select:focus {
   border-color: #007bff;
   outline: none;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.4);
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.45);
+}
+
+/* Custom Select Styling */
+.auth-container select {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, #007bff 50%),
+    linear-gradient(135deg, #007bff 50%, transparent 50%);
+  background-position: calc(100% - 18px) center, calc(100% - 12px) center;
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+/* Elegant Gradient Button */
+.auth-container button {
+  padding: 13px;
+  background: linear-gradient(135deg, #007bff, #00a8ff);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 123, 255, 0.25);
+}
+
+.auth-container button:hover {
+  background: linear-gradient(135deg, #0056b3, #0084ff);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.35);
+}
+
+.msg {
+  margin-top: 20px;
+  font-weight: 500;
+  color: #666;
+  font-size: 14px;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  margin-top: 30px;
+}
+
+.nav a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.nav a:hover {
+  color: #0056b3;
+  transform: scale(1.05);
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .auth-container {
+    width: 90%;
+    padding: 35px 25px;
+  }
+  .auth-container h2 {
+    font-size: 24px;
+  }
 }

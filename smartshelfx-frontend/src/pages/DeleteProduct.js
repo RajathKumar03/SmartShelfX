@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import "../css/Inventory.css";
+import "../css/DeleteProduct.css";
 
 function DeleteProduct() {
   const [id, setId] = useState("");

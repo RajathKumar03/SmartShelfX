@@ -1,0 +1,83 @@
+.add-product h2 {
+  color: #1e3a8a;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.form-card textarea {
+  padding: 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 1rem;
+  resize: none;
+  min-height: 80px;
+  transition: border-color 0.2s;
+}
+
+.form-card textarea:focus {
+  border-color: #2563eb;
+}
+
+input[type="file"] {
+  background-color: #f8fafc;
+  padding: 8px;
+  border: 1px dashed #94a3b8;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+input[type="file"]:hover {
+  background-color: #f1f5f9;
+  border-color: #2563eb;
+}
+
+.image-preview {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.image-preview p {
+  font-size: 0.95rem;
+  color: #475569;
+  margin-bottom: 5px;
+}
+
+.image-preview img {
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.message {
+  margin-top: 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.message:has(> span.error),
+.message:has(> span.success) {
+  display: block;
+}
+
+.message:contains("✅") {
+  color: #16a34a;
+}
+
+.message:contains("❌"),
+.message:contains("⚠️") {
+  color: #dc2626;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  .add-product h2 {
+    font-size: 1.5rem;
+  }
+  .image-preview img {
+    width: 120px;
+  }
+}

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "../css/Inventory.css";
+import "../css/AddProduct.css";
 
 function AddProduct() {
   const [form, setForm] = useState({

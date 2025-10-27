@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ProductAPI } from "../api";
 import "../css/Inventory.css";
+import "../css/UpdateProduct.css";
 
 function UpdateProduct() {
   const [id, setId] = useState("");
