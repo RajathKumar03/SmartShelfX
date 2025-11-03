@@ -5,6 +5,7 @@ import com.smartshelfx.SmartShelfX.model.Product;
 import com.smartshelfx.SmartShelfX.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -93,4 +94,19 @@ public class ProductController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+    
+    @PutMapping("/{id}/image")
+    public ResponseEntity<?> updateProductImage(
+            @PathVariable Long id,
+            @RequestParam("image") MultipartFile imageFile) {
+        try {
+            productService.updateProductImage(id, imageFile);
+            return ResponseEntity.ok("✅ Product image updated successfully!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("❌ Error updating product image: " + e.getMessage());
+        }
+    }
+
 }

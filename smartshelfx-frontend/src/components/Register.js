@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { AuthAPI } from "../api"; // ✅ Correct import
+import { AuthAPI } from "../api";
 import "../css/Auth.css";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     fullName: "",
     companyName: "",
@@ -74,6 +76,7 @@ function Register() {
         warehouseLocation: "",
         termsAccepted: false,
       });
+       setTimeout(() => navigate("/"), 3000);
     } catch (err) {
       console.error(err);
       setMessage("Registration failed! " + (err.response?.data || ""));
@@ -122,6 +125,7 @@ function Register() {
           required
         />
         <select name="role" value={form.role} onChange={handleChange}>
+          <option value="USER">User</option>
           <option value="ADMIN">Admin</option>
           <option value="STORE_MANAGER">Store Manager</option>
         </select>

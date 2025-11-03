@@ -9,7 +9,7 @@ import GetProducts from "./pages/GetProducts";
 import UpdateProduct from "./pages/UpdateProduct";
 import DeleteProduct from "./pages/DeleteProduct";
 
-// Navbar component
+
 function AuthNavbar() {
   return (
     <nav className="nav">
@@ -28,6 +28,7 @@ function AppWrapper() {
       {showNavbar && <AuthNavbar />}
       <Routes>
         <Route path="/" element={<Login />} />
+        {/* <Route path="/login" element={<Login />} /> */}
         <Route path="/register" element={<Register />} />
         <Route path="/landing" element={<LandingPage />} />
         <Route path="/add" element={<AddProduct />} />
